@@ -22,10 +22,11 @@ sudo cp docker-compose.yml /opt/guac_services/
 sudo cp -r nginx/ /opt/guac_services/.
 echo "Preparing folder init and creating /opt/guac_services/init/initdb.sql"
 sudo mkdir /opt/guac_services/init >/dev/null 2>&1
-sudo mkdir -p /opt/guac_services/nginx/ssl >/dev/null 2>&1
+sudo docker run --rm guacamole/guacamole /opt/guacamole/bin/initdb.sh --postgres > ./init/initdb.sql
+sudo cp ./init/initdb.sql /opt/guac_services/init
 sudo chmod -R +x /opt/guac_services/init
-docker run --rm guacamole/guacamole /opt/guacamole/bin/initdb.sh --postgres > /opt/guac_services/init/initdb.sql
 echo "Creating SSL certificates"
+sudo mkdir -p /opt/guac_services/nginx/ssl >/dev/null 2>&1
 sudo openssl req -nodes -newkey rsa:2048 -new -x509 -keyout /opt/guac_services/nginx/ssl/self-ssl.key -out /opt/guac_services/nginx/ssl/self.cert -subj '/C=US/ST=MD/L=Baltimore/O=Company/OU=IT/CN=www.custom.domain'
 echo "Setting Up Guacamole Service"
 sudo cp guacamole.service /etc/systemd/system/.
