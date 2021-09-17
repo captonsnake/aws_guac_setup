@@ -6,7 +6,7 @@ sudo apt-get -qq install -y tightvncserver xfce4 xfce4-goodies docker.io docker-
 echo "Configuring tightVNC"
 echo "Enter a Password for VNC if not already ran"
 vncserver
-if [ $? -eq 0]; then
+if [[ $? -eq 0 ]]; then
 	echo "VNC password set";
 else
 	echo "VNC password failed to set. Must be 8 characters"

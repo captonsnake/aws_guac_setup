@@ -4,7 +4,7 @@ server {
     server_name  localhost;
 
         ssl_certificate /etc/nginx/ssl/self.cert;
-        ssl_certificate_key /etc/nginx/ssl/self.key;
+        ssl_certificate_key /etc/nginx/ssl/self-ssl.key;
 
         ssl_protocols TLSv1.2 TLSv1.3;
         ssl_prefer_server_ciphers on;
