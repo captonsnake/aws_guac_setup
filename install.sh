@@ -23,7 +23,7 @@ sudo cp -r nginx/ /opt/guac_services/.
 echo "Preparing folder init and creating /opt/guac_services/init/initdb.sql"
 sudo mkdir /opt/guac_services/init >/dev/null 2>&1
 sudo docker run --rm guacamole/guacamole /opt/guacamole/bin/initdb.sh --postgres > ./init/initdb.sql
-sudo cp ./init/initdb.sql /opt/guac_services/init
+sudo cp ./init/initdb.sql /opt/guac_services/init/initdb.sql
 sudo chmod -R +x /opt/guac_services/init
 echo "Creating SSL certificates"
 sudo mkdir -p /opt/guac_services/nginx/ssl >/dev/null 2>&1
